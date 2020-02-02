@@ -1,10 +1,32 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 
 //this creates context and stored in const
 export const ThemeContext = createContext();
 
-class ThemeContextProvider extends React.Component {
-  state = {
+const ThemeContextProvider = props => {
+  const [isLightTheme, setLightTheme] = useState(true);
+  const [light, setLight] = useState({
+    syntax: "#555",
+    ui: "#ddd",
+    bg: "#eee"
+  });
+  const [dark, setDark] = useState({
+    syntax: "#ddd",
+    ui: "#333",
+    bg: "#555"
+  });
+  return (
+    <ThemeContext.Provider value={{ light, isLightTheme, dark }}>
+      {/* This refers to the children that the context provider wraps on */}
+      {props.children}
+    </ThemeContext.Provider>
+  );
+};
+
+export default ThemeContextProvider;
+
+/*
+state = {
     isLightTheme: true,
     light: {
       syntax: "#555",
@@ -15,16 +37,6 @@ class ThemeContextProvider extends React.Component {
       syntax: "#ddd",
       ui: "#333",
       bg: "#555"
-    }
-  };
-  render() {
-    return (
-      <ThemeContext.Provider value={{ ...this.state }}>
-        {/* This refers to the children that the context provider wraps on */}
-        {this.props.children}
-      </ThemeContext.Provider>
-    );
-  }
-}
-
-export default ThemeContextProvider;
+    } 
+    
+    */
