@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
+import "./ThemeToggle.scss";
 
 const ThemeToggle = props => {
   const context = useContext(ThemeContext);
-  const { isLightTheme, toggleTheme } = context;
+  const { toggleTheme } = context;
 
   return (
     <div>
-      <button onClick={toggleTheme}>Toggle Theme</button>
+      <button className="btn" onClick={toggleTheme}>
+        Toggle Theme
+      </button>
     </div>
   );
 };
