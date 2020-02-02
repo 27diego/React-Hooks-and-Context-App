@@ -15,8 +15,13 @@ const ThemeContextProvider = props => {
     ui: "#333",
     bg: "#555"
   });
+
+  const toggleTheme = () => {
+    isLightTheme ? setLightTheme(false) : setLightTheme(true);
+  };
+
   return (
-    <ThemeContext.Provider value={{ light, isLightTheme, dark }}>
+    <ThemeContext.Provider value={{ light, isLightTheme, dark, toggleTheme }}>
       {/* This refers to the children that the context provider wraps on */}
       {props.children}
     </ThemeContext.Provider>

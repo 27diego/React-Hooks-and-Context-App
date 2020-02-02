@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
+import { AuthContext } from "../contexts/AuthContext";
 
 const BookList = props => {
   const context = useContext(ThemeContext);
   const { light, dark, isLightTheme } = context;
-
   const theme = isLightTheme ? light : dark;
+
+  const context2 = useContext(AuthContext);
+  const { isAuthenticated, toggle } = context2;
   return (
     <div
       className="book-list"
